@@ -41,7 +41,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-.dark {
+/* :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -74,9 +74,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
+} 
 
-:root {
+.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -108,13 +108,77 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+} */
+
+:root {
+  --background: hsl(0 44% 98%);
+  --foreground: hsl(0 56% 5%);
+  --muted: hsl(180 5% 85%);
+  --muted-foreground: hsl(180 2% 26%);
+  --popover: hsl(0 44% 98%);
+  --popover-foreground: hsl(0 56% 5%);
+  --card: hsl(0 44% 97%);
+  --card-foreground: hsl(0 56% 4%);
+  --border: hsl(0 13% 92%);
+  --input: hsl(0 13% 92%);
+  --primary: hsl(0 72% 51%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(180 72% 51%);
+  --secondary-foreground: hsl(180 72% 11%);
+  --accent: hsl(180 72% 51%);
+  --accent-foreground: hsl(180 72% 11%);
+  --destructive: hsl(3 93% 44%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --ring: hsl(0 72% 51%);
+  --chart-1: hsl(0 72% 51%);
+  --chart-2: hsl(180 72% 51%);
+  --chart-3: hsl(180 72% 51%);
+  --chart-4: hsl(180 72% 54%);
+  --chart-5: hsl(0 75% 51%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(0 42% 2%);
+  --foreground: hsl(0 10% 100%);
+  --muted: hsl(180 5% 15%);
+  --muted-foreground: hsl(180 2% 74%);
+  --popover: hsl(0 42% 2%);
+  --popover-foreground: hsl(0 10% 100%);
+  --card: hsl(0 42% 3%);
+  --card-foreground: hsl(0 0% 100%);
+  --border: hsl(0 13% 14%);
+  --input: hsl(0 13% 14%);
+  --primary: hsl(0 72% 51%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(180 72% 51%);
+  --secondary-foreground: hsl(180 72% 11%);
+  --accent: hsl(180 72% 51%);
+  --accent-foreground: hsl(180 72% 11%);
+  --destructive: hsl(3 93% 58%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --ring: hsl(0 72% 51%);
+  --chart-1: hsl(0 72% 51%);
+  --chart-2: hsl(180 72% 51%);
+  --chart-3: hsl(180 72% 51%);
+  --chart-4: hsl(180 72% 54%);
+  --chart-5: hsl(0 75% 51%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  * {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }
