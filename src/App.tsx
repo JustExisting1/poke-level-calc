@@ -1,4 +1,4 @@
-import { FormEvent, FormEventHandler, useState } from "react";
+import { FormEvent, useState } from "react";
 import { FetchGrowthRate, GrowRate, pokemon } from "./util/PokiApiSearch";
 import CalculateExp from "./util/CalculateExp";
 
