@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { FormEvent, FormEventHandler, useState } from "react";
 import { FetchGrowthRate, GrowRate, pokemon } from "./util/PokiApiSearch";
 import CalculateExp from "./util/CalculateExp";
 
 function App() {
   const [search, setSearch] = useState("");
   const [startLvl, setStartLvl] = useState<number | undefined>();
-  const [targetLvl, setTargetLvl] = useState<number| undefined>();
+  const [targetLvl, setTargetLvl] = useState<number | undefined>();
   const [name, setName] = useState("");
   const [grow, setGrow] = useState<GrowRate>();
   const [exp, setExp] = useState<number>();
   const [cycleTime, setCycleTime] = useState<number>();
 
-  const handleSearch = async (e: Event) => {
+  const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
 
     if (search == "") return;
@@ -35,7 +35,7 @@ function App() {
     }
   };
 
-  function validateNumber(input, fn: (int: number) => void) {
+  function validateNumber(input: any, fn: (int: number) => void) {
     const value = Math.max(0, Math.min(100, input));
     fn(value);
   }
