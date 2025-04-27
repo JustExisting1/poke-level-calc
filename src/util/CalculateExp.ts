@@ -1,8 +1,8 @@
 import { GrowRate } from "./PokiApiSearch";
 
 export default function CalculateExp(
-  currentLevel: number,
-  targetLevel: number,
+  currentLevel: number| undefined,
+  targetLevel: number| undefined,
   growRate: GrowRate
 ): number {
   if (currentLevel == undefined || targetLevel == undefined) return -1;

@@ -4,8 +4,8 @@ import CalculateExp from "./util/CalculateExp";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [startLvl, setStartLvl] = useState<number>();
-  const [targetLvl, setTargetLvl] = useState<number>();
+  const [startLvl, setStartLvl] = useState<number | undefined>();
+  const [targetLvl, setTargetLvl] = useState<number| undefined>();
   const [name, setName] = useState("");
   const [grow, setGrow] = useState<GrowRate>();
   const [exp, setExp] = useState<number>();
