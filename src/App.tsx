@@ -1,6 +1,8 @@
 import { FormEvent, useState } from "react";
 import { FetchGrowthRate, GrowRate, pokemon } from "./util/PokiApiSearch";
 import CalculateExp from "./util/CalculateExp";
+import Autocomplete from "./components/Autocomplete";
+import pokeFile from "./data/PokemonList.json";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -10,6 +12,8 @@ function App() {
   const [grow, setGrow] = useState<GrowRate>();
   const [exp, setExp] = useState<number>();
   const [cycleTime, setCycleTime] = useState<number>();
+
+  const pokeList: string[] = pokeFile;
 
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
@@ -35,23 +39,43 @@ function App() {
     }
   };
 
+  function autofillTrigger(value: string) {
+    if (value != undefined) setSearch(value);
+  }
+
   function validateNumber(input: any, fn: (int: number) => void) {
     const value = Math.max(0, Math.min(100, input));
     fn(value);
   }
 
+  const preventEnterKeySubmission = (
+    e: React.KeyboardEvent<HTMLFormElement>
+  ) => {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    if (e.key === "Enter" && target.id == "autocomplete") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="flex flex-col w-4/5 md:w-1/3 h-dvh bg-background text-foreground place-self-center p-2">
       <form
         className="flex flex-col w-full h-fit place-items-center gap-2 bg-card p-2 rounded-xl text-xl"
-        onSubmit={handleSearch}>
+        onSubmit={handleSearch}
+        onKeyDown={(e) => preventEnterKeySubmission(e)}>
         <label>Pokemon</label>
-        <input
+        <Autocomplete
+          pokeList={pokeList}
+          classname="flex flex-col w-full"
+          submitSearch={autofillTrigger}
+          clearOnChange={name}
+        />
+        {/* <input
           className="p-2 text-center w-full bg-input rounded-md"
           placeholder="Search Pokemon"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
+        /> */}
         <label>Starting Level</label>
         <input
           className="p-2 text-center w-1/2 bg-input rounded-md"
